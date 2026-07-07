@@ -7,8 +7,6 @@ const uiSlice= createSlice({
   initialState,
   reducers:{
     toggle(state){
-      console.log("in UI");
-      
       state.cartIsVisible = !state.cartIsVisible;
     }
   }
