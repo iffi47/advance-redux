@@ -4,6 +4,7 @@ import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
 import { useSelector, useDispatch } from "react-redux";
 import { uiActions } from "./store/uiSlice";
+import Notification from "./components/UI/Notification";
 
 function App() {
   const toggleCart = useSelector((state) => state.ui.cartIsVisible);
@@ -46,12 +47,20 @@ function App() {
    });
   }, [cart, dispatch]);
   return (
-    <>
-    <Notification/>
-   <Layout>
-    {toggleCart && <Cart />}
-    <Products />
-   </Layout>
+   <>
+    {notification.status !== "success" && (
+     <Notification
+      status={notification.status}
+      title={notification.title}
+      message={notification.message}
+     />
+    )}
+    {notification.status === "success" && (
+     <Layout>
+      {toggleCart && <Cart />}
+      <Products />
+     </Layout>
+    )}
    </>
   );
 }

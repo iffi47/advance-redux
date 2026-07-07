@@ -1,7 +1,8 @@
-export default function Notification(){
-  return(
-    <>
-      <
-    </>
-  )
+export default function Notification({ title, message }) {
+ return (
+  <>
+   <h1>{title}</h1>
+   <p>{message}</p>
+  </>
+ );
 }
